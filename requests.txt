@@ -1,0 +1,71 @@
+https://accounts.spotify.com/authorize?client_id=6b865352bef549c088ff333ba60b5a0f&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com&scope=playlist-read-private
+
+curl --request POST \
+  --header "Authorization: Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM=" \
+  --data grant_type=authorization_code \
+  --data code=AQD2abOUhmIH0F0jn4sbqYCpTkdu5nLSRV00E4IEchhE4lBlLaCbZvMTKCLZCJJCjv3BseSjqBRF75Aqu1szmIKVtYkfGwX_rZfoohrYmcXdzwAW8VR1tISGRNvcF4gHBfpzxeq3KzIzXQXJ_bKXP3totwD0Gbt3lI7nKFn9UknTnrjW6nHjRPrVjM5U \
+  --data redirect_uri=https%3A%2F%2Fgithub.com https://accounts.spotify.com/api/token
+
+
+curl
+
+
+curl --request GET \
+  --url https://api.spotify.com/v1/me \
+  --header 'Authorization: Bearer BQCdOsQj28zehPbCgnhrTf7qwQMKQh7bltWT-cg0cIvLhEhERTvGY58o874pVhuT6Kr2pxWJTUsmv5-G1-Xx4rA03tfhO9AFdr1DjEhuI0xKk4t6ERUvZmDNWJr5snoKCqTDgyMndSqbxW3jTRznoMgCLptxRk97gdsY-JZ_i-rssWEtGWv4Hr7a8md1' \
+  --header 'Content-Type: application/json'
+
+
+/notebooks/dev/jupyter notebooks/spotify api requests.ipynb
+curl --request GET \
+  --url https://api.spotify.com/v1/users/kasimir3/playlists \
+  --header 'Authorization: Bearer BQCdOsQj28zehPbCgnhrTf7qwQMKQh7bltWT-cg0cIvLhEhERTvGY58o874pVhuT6Kr2pxWJTUsmv5-G1-Xx4rA03tfhO9AFdr1DjEhuI0xKk4t6ERUvZmDNWJr5snoKCqTDgyMndSqbxW3jTRznoMgCLptxRk97gdsY-JZ_i-rssWEtGWv4Hr7a8md1' \
+  --header 'Content-Type: application/json'
+
+
+
+
+
+  meine drip drop playlist:
+  {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/6NYUUALff1pcZRJHaLpvRA"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/6NYUUALff1pcZRJHaLpvRA",
+    "id" : "6NYUUALff1pcZRJHaLpvRA",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706c0000bebb81c5358ec55fbbde1715bc28",
+      "width" : null
+    } ],
+    "name" : "drip drop",
+    "owner" : {
+      "display_name" : "liam",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/kasimir3"
+      },
+      "href" : "https://api.spotify.com/v1/users/kasimir3",
+      "id" : "kasimir3",
+      "type" : "user",
+      "uri" : "spotify:user:kasimir3"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "MjQ3OSxiODkxOTgxZjE3MTkxNGQ2YmE1MDM3Y2Y3NmY5ZjZjN2MwZjg3MDhk",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/6NYUUALff1pcZRJHaLpvRA/tracks",
+      "total" : 205
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:6NYUUALff1pcZRJHaLpvRA"
+  }
+
+
+
+  at:
+  BQDzBngbdxJfUct9TKhDVEVlvKBJIeaLZbjKQwIoEjcS-fSd7glmgV9XfvrWwsYCrFIohDWRxWs9thN8uJSXoa7QVhcsBtG4brUyFr8r63AlTid2pXeuJvdUZS-IFD0ilkkpR3liDEwzYB3waAgDLDtDHNnP75hZ0AzHzsZ4k6icjs7lfUsuzmtcOAsM
+
+  rt:
+  AQAdT2SYh8NFMaiCKJLvBiE1IyWSZ0u-NVWLr4lQhmRhsvM913BdUEFSirOKOY3ZVHReeiQmHL7hlBNWF2fQ8snbK3U7JfVupsjzVShTx262Sx1sR_GxRi7Jl5wHKV8Ql6g
