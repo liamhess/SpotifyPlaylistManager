@@ -44,7 +44,7 @@ def token_refresh():
     if new_refresh_token_given():
         refresh_token = content_dir["refresh_token"]
 
-    # neuen access_token und jenachdem auch refresh_token in file schreiben
+    # neuen access_token und jenachdem auch refresh_token in data.txt schreiben
     with open("data.txt", "w") as f:
         file_dir = {
             "access_token": access_token,
