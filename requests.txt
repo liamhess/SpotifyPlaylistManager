@@ -1,11 +1,19 @@
 https://accounts.spotify.com/authorize?client_id=6b865352bef549c088ff333ba60b5a0f&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com&scope=playlist-read-private
 
+refresh_token: AQBKQoF8LPYeQDALQfCa4VlzHcc04GRCtV6ItLk7EQEZNXNbKSRaeebmyW7WoxltPMBB5pJVFePxFtnousEq2QFtyD2QcEPQSZfcrTDWpVeVUzr5AYCu1DI4yP-jeGcXyZg
+
 curl --request POST \
   --header "Authorization: Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM=" \
   --data grant_type=authorization_code \
-  --data code=AQD2abOUhmIH0F0jn4sbqYCpTkdu5nLSRV00E4IEchhE4lBlLaCbZvMTKCLZCJJCjv3BseSjqBRF75Aqu1szmIKVtYkfGwX_rZfoohrYmcXdzwAW8VR1tISGRNvcF4gHBfpzxeq3KzIzXQXJ_bKXP3totwD0Gbt3lI7nKFn9UknTnrjW6nHjRPrVjM5U \
+  --data code=AQBKQoF8LPYeQDALQfCa4VlzHcc04GRCtV6ItLk7EQEZNXNbKSRaeebmyW7WoxltPMBB5pJVFePxFtnousEq2QFtyD2QcEPQSZfcrTDWpVeVUzr5AYCu1DI4yP-jeGcXyZg \
   --data redirect_uri=https%3A%2F%2Fgithub.com https://accounts.spotify.com/api/token
 
+
+curl --request POST \
+  --url https://accounts.spotify.com/api/token \
+  --header "Authorization: Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM=" \
+  --data grant_type=refresh_token \
+  --data refresh_token=AQBKQoF8LPYeQDALQfCa4VlzHcc04GRCtV6ItLk7EQEZNXNbKSRaeebmyW7WoxltPMBB5pJVFePxFtnousEq2QFtyD2QcEPQSZfcrTDWpVeVUzr5AYCu1DI4yP-jeGcXyZg
 
 curl
 
