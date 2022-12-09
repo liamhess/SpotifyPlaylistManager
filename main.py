@@ -1,4 +1,13 @@
 from internet import *
+from api_calls import *
 
-test_dict = {"access_token": "test", "refresh_token": "test2"}
-print(new_refresh_token_given(test_dict))
+i = Internet()
+a = ApiCalls(i.give_valid_access_token())
+
+# print(i.access_token_check())
+# i.renew_access_token()
+# print(i.access_token_check())
+
+# print(i.give_valid_access_token())
+
+print(a.get_playlist_items())
