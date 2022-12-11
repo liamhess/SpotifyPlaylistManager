@@ -32,7 +32,7 @@ curl --request GET \
 
 
 curl --request GET \
-  --url 'https://api.spotify.com/v1/playlists/6NYUUALff1pcZRJHaLpvRA?fields=href,%20items(track(name),%20added_at)' \
+  --url 'https://api.spotify.com/v1/playlists/6NYUUALff1pcZRJHaLpvRA/tracks?offset=5&limit=5&fields=items(track(name),%20added_at),%20next' \
   --header 'Authorization: Bearer BQCahG0wmBOP5V8sBoOVlfScABZkbECJJkU_0M6KLloBG9Bxv6xrJskLrtDVI86ZGjB-fTaGvkdr-WuWy7v3UjKGxw2Ae0isEbumPpoQmYIXAe9M8cYmyxqkjZwTP9qOeEZJ7r5Dy9Z5Pw7m8lT60xiAAt57qMc-hv2B2My6immsicksgoVG8u8E3Lpa' \
   --header 'Content-Type: application/json'
 
