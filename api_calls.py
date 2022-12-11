@@ -77,7 +77,6 @@ class ApiCalls:
             # nur wenn es nicht die letzte request ist, wird das current_part_playlist_obj geupdatet
             if i != needed_request_amount-1:
                 next_url = current_part_playlist_obj["next"]
-                current_part_playlist_obj = self.basic_api_call(next_url)
-    
+                current_part_playlist_obj = self.basic_api_call(next_url)    
 
         return song_list
