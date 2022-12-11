@@ -7,7 +7,6 @@ class Internet:
 
 
     def __init__(self):
-        print("init")
         # access_token und refresh_token aus data.txt auslesen und in variablen schreiben
         with open("data.txt", "r") as f:
             content = json.loads(f.read())

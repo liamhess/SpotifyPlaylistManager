@@ -40,18 +40,18 @@ class ApiCalls:
     # Get Playlist Api Call
     # gibt Liste aller Songs der Playlist nach Datum sortiert aus
     def get_playlist_items(self):
-        url = "https://api.spotify.com/v1/playlists/" + self.playlist_id
+        url = "https://api.spotify.com/v1/playlists/" + self.playlist_id + "/tracks"
         headers = {
             "Authorization": "Bearer " + self.access_token,
             "Content-Type": "application/json"
         }
         params = {
             "limit": 1,
-            "fields": "href, items(track(name), added_at)"
+            "fields": "items(track(name), added_at)"
         }
 
         r = requests.get(url=url, headers=headers, params=params)
         playlist_obj = r.json()
-        return playlist_obj.tracks
+        return playlist_obj
 
 # WARUM IST DIE ITEMS LIST IN DER RESPONES LEER????
