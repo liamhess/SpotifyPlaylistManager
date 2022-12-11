@@ -5,11 +5,9 @@ import json
 # Klasse, die sich um Ablaufen und Erneuern der Tokens kümmert
 class Internet:
 
-    access_token = ""
-    refresh_token = ""
-
 
     def __init__(self):
+        print("init")
         # access_token und refresh_token aus data.txt auslesen und in variablen schreiben
         with open("data.txt", "r") as f:
             content = json.loads(f.read())
@@ -34,10 +32,9 @@ class Internet:
     # Funktion die checkt, ob in einem dictionary ein "refresh_token" Wert gegeben ist
     # konkreter usecase hier: ob in token_refresh() ein neuer refresh_token gegeben wird
     def new_refresh_token_given(self, dict):
-        value = False;
         if "refresh_token" in dict:
-            value = True;
-        return value
+            return True
+        else: return False
 
 
     # Funktion um access_token mit refresh_token zu erneuern
@@ -74,7 +71,7 @@ class Internet:
         if self.access_token_check():
             return self.access_token
         else:
-            self.renew_access_token
+            self.renew_access_token()
             if self.access_token_check():
                 print(self.access_token)
                 return self.access_token
