@@ -9,4 +9,5 @@ a = ApiCalls(i.give_valid_access_token())
 
 # print(i.give_valid_access_token())
 
+print(a.get_playlist_items())
 print(a.remove_songs_from_playlist())

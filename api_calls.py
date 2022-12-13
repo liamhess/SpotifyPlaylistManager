@@ -6,6 +6,7 @@ class ApiCalls:
     
     access_token = ""
     playlist_id = ""
+    i = Internet()
 
 
     def __init__(self, access_token):
@@ -94,15 +95,8 @@ class ApiCalls:
             "Authorization": "Bearer " + self.access_token,
             "Content-Type": "application/json"
         }
-        song_list = [
-            {
-                "uid": "spotify:track:3cY5S0i5qgELukIk1KtWa3"
-            }
-        ]
-        list_json = json.dumps(song_list)
-        data = {
-            "tracks": list_json
-        }
 
-        r = requests.post(url=url, data=data)
+        data = {"tracks": [{"uri": "spotify:track:3cY5S0i5qgELukIk1KtWa3"}]}
+
+        r = requests.delete(url=url, headers=headers, data=data)
         return r.content
