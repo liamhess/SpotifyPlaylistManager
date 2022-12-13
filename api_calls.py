@@ -80,4 +80,8 @@ class ApiCalls:
                 next_url = current_part_playlist_obj["next"]
                 current_part_playlist_obj = self.basic_api_call(next_url)    
 
+        # Sortiere Liste nach Datum (nicht gebraucht, da Liste ohne das .sort so ausgegeben wird wie sie in Spotify erstellt wird,
+        # so kann man theoretisch die Reihenfolge der Rauswerfqueue ändern, könnte man mit date sorted nicht)
+        # song_list.sort(key=lambda item:item["added_at"])
+
         return song_list
