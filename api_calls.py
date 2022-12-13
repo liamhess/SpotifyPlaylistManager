@@ -48,7 +48,7 @@ class ApiCalls:
         }
         params = {
             "limit": 50,
-            "fields": "total, next, items(track(name), added_at)"
+            "fields": "total, next, items(track(name, uri), added_at)"
         }
 
         r = requests.get(url=url, headers=headers, params=params)
@@ -68,7 +68,8 @@ class ApiCalls:
             for song in current_items:
                 song_dict = {
                     "name": song["track"]["name"],
-                    "added_at": song["added_at"]
+                    "added_at": song["added_at"],
+                    "uri": song["track"]["uri"]
                 }
                 song_list.append(song_dict)
                 # print(str(counter) + ". " + song_dict["name"] + " hinzugeüft am: " + song_dict["added_at"])
