@@ -12,7 +12,7 @@ class ApiCalls:
         self.access_token = access_token
         # test playlist id = 60QjB7v7V8If58q661ZzOj
         # echte drip drop playlist id = 6NYUUALff1pcZRJHaLpvRA 
-        self.playlist_id = "6NYUUALff1pcZRJHaLpvRA"
+        self.playlist_id = "60QjB7v7V8If58q661ZzOj"
 
     
     # Get Current User's Playlists Api Call
@@ -86,3 +86,23 @@ class ApiCalls:
         # song_list.sort(key=lambda item:item["added_at"])
 
         return song_list
+
+    
+    def remove_songs_from_playlist(self):
+        url = "https://api.spotify.com/v1/playlists/" + self.playlist_id + "/tracks"
+        headers = {
+            "Authorization": "Bearer " + self.access_token,
+            "Content-Type": "application/json"
+        }
+        song_list = [
+            {
+                "uid": "spotify:track:3cY5S0i5qgELukIk1KtWa3"
+            }
+        ]
+        list_json = json.dumps(song_list)
+        data = {
+            "tracks": list_json
+        }
+
+        r = requests.post(url=url, data=data)
+        return r.content
