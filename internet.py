@@ -72,7 +72,6 @@ class Internet:
         else:
             self.renew_access_token()
             if self.access_token_check():
-                print(self.access_token)
                 return self.access_token
             else:
                 print("access_token_renewal didn't work")

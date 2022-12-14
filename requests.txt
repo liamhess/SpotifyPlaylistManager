@@ -75,7 +75,11 @@ curl --request GET \
   }
 
 
-
+curl --request DELETE \
+  --url https://api.spotify.com/v1/playlists/60QjB7v7V8If58q661ZzOj/tracks \
+  --header 'Authorization: Bearer BQDeBDGzh3PXsT-XFTNiWkpOAzlvTM7NDX7YHKWjO1r61ANrT8X4ixkpq07lCAAPxjTvjjfhDDrFEK6Ks8itXfyDE-EuCOM2my0_rfza40_GbcJOu7q5VtrX4jUPm3gR9q9DTbT2bYVS-dirW9WfwRoBSSGMa2OXTOHaTpNtCW3YPVhN0A1QiJmN0vJ9' \
+  --header 'Content-Type: application/json' \
+  --data "{"tracks": [{"uri": "spotify:track:3KPhaCvEPAKmwgYd8LARFe"}]}"
 
 
 
