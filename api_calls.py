@@ -42,8 +42,8 @@ class ApiCalls:
 
     # Get Playlist Api Call
     # gibt Liste aller Songs der Playlist nach Datum sortiert aus
-    def get_playlist_items(self):
-        url = "https://api.spotify.com/v1/playlists/" + self.playlist_id + "/tracks"
+    def get_playlist_items(self, playlist_id):
+        url = "https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks"
         headers = {
             "Authorization": "Bearer " + self.access_token,
             "Content-Type": "application/json"
@@ -82,23 +82,22 @@ class ApiCalls:
                 next_url = current_part_playlist_obj["next"]
                 current_part_playlist_obj = self.basic_api_call(next_url)    
 
-        # Sortiere Liste nach Datum (nicht gebraucht, da Liste ohne das .sort so ausgegeben wird wie sie in Spotify erstellt wird,
-        # so kann man theoretisch die Reihenfolge der Rauswerfqueue ändern, könnte man mit date sorted nicht)
-        # song_list.sort(key=lambda item:item["added_at"])
+        # Liste nach Datum sortieren
+        song_list.sort(key=lambda item:item["added_at"])
 
         return song_list
 
     
-    # Test Funktion um Song Removal Endpoint auszuprobieren,
-    # kann später ja noch mit tracks argument verallgemeinert werden
-    def remove_songs_from_playlist(self):
+    # Song Removal Funktion
+    # Nimmt als argument eine Liste von song dicts
+    def remove_songs_from_playlist(self, songs_to_remove):
         url = "https://api.spotify.com/v1/playlists/" + self.playlist_id + "/tracks"
         headers = {
             "Authorization": "Bearer " + self.access_token,
             "Content-Type": "application/json"
         }
-
-        data = '{"tracks": [{"uri": "spotify:track:3cY5S0i5qgELukIk1KtWa3"}]}'
+        json_song_dicts = json.dumps(songs_to_remove)
+        data = '{"tracks": ' + json_song_dicts + '}'
         print(data)
         r = requests.delete(url=url, headers=headers, data=data)
         return r.content
