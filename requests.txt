@@ -1,40 +1,56 @@
-https://accounts.spotify.com/authorize?client_id=6b865352bef549c088ff333ba60b5a0f&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com&scope=playlist-read-private
+User Authorization URL bei der man scopes und Zugriffe akzeptieren muss:
+https://accounts.spotify.com/authorize?client_id=6b865352bef549c088ff333ba60b5a0f&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com&scope=playlist-read-private%20playlist-modify-private%20playlist-modify-public&show_dialog=true
 
-refresh_token: AQBKQoF8LPYeQDALQfCa4VlzHcc04GRCtV6ItLk7EQEZNXNbKSRaeebmyW7WoxltPMBB5pJVFePxFtnousEq2QFtyD2QcEPQSZfcrTDWpVeVUzr5AYCu1DI4yP-jeGcXyZg
 
+refresh_token: AQDF4Jai9VF-m7BS1i8iSIvJ7DHz89AFZYfWpSMRJ8CrfHc8qk5Sm21_3vqNfKuGixJn_exJt1N8MRbsL8e5-qKMF8SrFSlNS_f4j2BiI18yHOO9Xb-mR33h31Lz5DxUh5I
+
+
+Mit Authorization Code aus Browser URL access und refresh token erhalten:
 curl --request POST \
   --header "Authorization: Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM=" \
   --data grant_type=authorization_code \
-  --data code=AQBKQoF8LPYeQDALQfCa4VlzHcc04GRCtV6ItLk7EQEZNXNbKSRaeebmyW7WoxltPMBB5pJVFePxFtnousEq2QFtyD2QcEPQSZfcrTDWpVeVUzr5AYCu1DI4yP-jeGcXyZg \
+  --data code=AQCU2T8vVt5uINq4Qa_DZsRTKGls_uh8tozMYevxERa650Lp_uWeO1rBLFGnENA9S9DYJh5bLvtbYMVkwB4DWiJeSsofK7iMxY8ctjpaEVszkLvQeVR5rTf8MfaV7nUxj1Moa9GvMfVe6JMxA8A23W19kGlJG-2tZwPM1DSL_a_itpwHXz4Sarl8MhTOwzv6aRAt9MmDKCKnScoryGm-JqLJZLdGw5Aqg13ITrix1P3pxVWhbhKhHW9vAYbEHg \
   --data redirect_uri=https%3A%2F%2Fgithub.com https://accounts.spotify.com/api/token
 
 
+Access token mit refresh token erneuern:
 curl --request POST \
   --url https://accounts.spotify.com/api/token \
   --header "Authorization: Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM=" \
   --data grant_type=refresh_token \
   --data refresh_token=AQBKQoF8LPYeQDALQfCa4VlzHcc04GRCtV6ItLk7EQEZNXNbKSRaeebmyW7WoxltPMBB5pJVFePxFtnousEq2QFtyD2QcEPQSZfcrTDWpVeVUzr5AYCu1DI4yP-jeGcXyZg
 
-curl
 
-
+Profilinfos, wie z.B. Usename:
 curl --request GET \
   --url https://api.spotify.com/v1/me \
   --header 'Authorization: Bearer BQCdOsQj28zehPbCgnhrTf7qwQMKQh7bltWT-cg0cIvLhEhERTvGY58o874pVhuT6Kr2pxWJTUsmv5-G1-Xx4rA03tfhO9AFdr1DjEhuI0xKk4t6ERUvZmDNWJr5snoKCqTDgyMndSqbxW3jTRznoMgCLptxRk97gdsY-JZ_i-rssWEtGWv4Hr7a8md1' \
   --header 'Content-Type: application/json'
 
 
-/notebooks/dev/jupyter notebooks/spotify api requests.ipynb
+Alle Playlists von user ausgeben:
 curl --request GET \
   --url https://api.spotify.com/v1/users/kasimir3/playlists \
   --header 'Authorization: Bearer BQCdOsQj28zehPbCgnhrTf7qwQMKQh7bltWT-cg0cIvLhEhERTvGY58o874pVhuT6Kr2pxWJTUsmv5-G1-Xx4rA03tfhO9AFdr1DjEhuI0xKk4t6ERUvZmDNWJr5snoKCqTDgyMndSqbxW3jTRznoMgCLptxRk97gdsY-JZ_i-rssWEtGWv4Hr7a8md1' \
   --header 'Content-Type: application/json'
 
 
+Get Playlist Items:
 curl --request GET \
   --url 'https://api.spotify.com/v1/playlists/6NYUUALff1pcZRJHaLpvRA/tracks?offset=5&limit=5&fields=items(track(name),%20added_at),%20next' \
   --header 'Authorization: Bearer BQCahG0wmBOP5V8sBoOVlfScABZkbECJJkU_0M6KLloBG9Bxv6xrJskLrtDVI86ZGjB-fTaGvkdr-WuWy7v3UjKGxw2Ae0isEbumPpoQmYIXAe9M8cYmyxqkjZwTP9qOeEZJ7r5Dy9Z5Pw7m8lT60xiAAt57qMc-hv2B2My6immsicksgoVG8u8E3Lpa' \
   --header 'Content-Type: application/json'
+
+
+Songs aus Testplaylist entfernen:
+curl --request DELETE \
+  --url https://api.spotify.com/v1/playlists/60QjB7v7V8If58q661ZzOj/tracks \
+  --header 'Authorization: Bearer BQCllg5OKBz1lufxvIBoje0FfFAvAelb4QI10PxmfFBP7kuTXlq2vBqaosab5tJSm3DGhO-uRBs2j5H9XQ7q1PNKhHFX2b19VRVC1ATDjed9hmJWJQkKDEtgFj_ozpnONxxQgMuyGawFuNflqOviiTxPp9xUEB8SgMe3FQT8koyx4e0Ewc0TTCXNffCo' \
+  --header 'Content-Type: application/json' \
+  --data "{"tracks": [{"uri": "spotify:track:3KPhaCvEPAKmwgYd8LARFe"}]}"
+
+
+
 
 
 
@@ -75,11 +91,6 @@ curl --request GET \
   }
 
 
-curl --request DELETE \
-  --url https://api.spotify.com/v1/playlists/60QjB7v7V8If58q661ZzOj/tracks \
-  --header 'Authorization: Bearer BQDeBDGzh3PXsT-XFTNiWkpOAzlvTM7NDX7YHKWjO1r61ANrT8X4ixkpq07lCAAPxjTvjjfhDDrFEK6Ks8itXfyDE-EuCOM2my0_rfza40_GbcJOu7q5VtrX4jUPm3gR9q9DTbT2bYVS-dirW9WfwRoBSSGMa2OXTOHaTpNtCW3YPVhN0A1QiJmN0vJ9' \
-  --header 'Content-Type: application/json' \
-  --data "{"tracks": [{"uri": "spotify:track:3KPhaCvEPAKmwgYd8LARFe"}]}"
 
 
 

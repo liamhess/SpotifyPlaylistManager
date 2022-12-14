@@ -89,6 +89,8 @@ class ApiCalls:
         return song_list
 
     
+    # Test Funktion um Song Removal Endpoint auszuprobieren,
+    # kann später ja noch mit tracks argument verallgemeinert werden
     def remove_songs_from_playlist(self):
         url = "https://api.spotify.com/v1/playlists/" + self.playlist_id + "/tracks"
         headers = {
@@ -96,7 +98,13 @@ class ApiCalls:
             "Content-Type": "application/json"
         }
 
-        data = {"tracks": [{"uri": "spotify:track:3cY5S0i5qgELukIk1KtWa3"}]}
-
+        data = '{"tracks": [{"uri": "spotify:track:3cY5S0i5qgELukIk1KtWa3"}]}'
+        print(data)
         r = requests.delete(url=url, headers=headers, data=data)
         return r.content
+
+
+    # Test Funktion um Favorite Check auszuprobieren,
+    # später durch track argument verallgemeinern
+    def is_track_favorite(self):
+        pass
