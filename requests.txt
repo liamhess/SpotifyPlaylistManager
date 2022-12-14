@@ -9,7 +9,7 @@ Mit Authorization Code aus Browser URL access und refresh token erhalten:
 curl --request POST \
   --header "Authorization: Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM=" \
   --data grant_type=authorization_code \
-  --data code=AQCU2T8vVt5uINq4Qa_DZsRTKGls_uh8tozMYevxERa650Lp_uWeO1rBLFGnENA9S9DYJh5bLvtbYMVkwB4DWiJeSsofK7iMxY8ctjpaEVszkLvQeVR5rTf8MfaV7nUxj1Moa9GvMfVe6JMxA8A23W19kGlJG-2tZwPM1DSL_a_itpwHXz4Sarl8MhTOwzv6aRAt9MmDKCKnScoryGm-JqLJZLdGw5Aqg13ITrix1P3pxVWhbhKhHW9vAYbEHg \
+  --data code=AQDmXy1rI0-AdkYwWD14pGYD1BcRqOcGYfhSiCbYmDmjPJlTXa_ICPMrkXojIqOT2IRab-OzHiHSX7R3AZmFh42ELyKOdsPkvqTnZ6-Zld8j37neSkTY3pHxVwrNstjvSaRElXH5PsNQmJWOWoqL_KO8luv68gYo5dBZuipJzOzJ-9CS_Sz5bUFbnzk4vqLGN5-3MuQtZ2a9a4nB4qfP7eawUMhcMpcHQxnGvicuXGZIHMx5jqeFKVbUjxP8geeJYdscsK_CPmDSPRtoryNGv0g \
   --data redirect_uri=https%3A%2F%2Fgithub.com https://accounts.spotify.com/api/token
 
 
@@ -48,6 +48,13 @@ curl --request DELETE \
   --header 'Authorization: Bearer BQCllg5OKBz1lufxvIBoje0FfFAvAelb4QI10PxmfFBP7kuTXlq2vBqaosab5tJSm3DGhO-uRBs2j5H9XQ7q1PNKhHFX2b19VRVC1ATDjed9hmJWJQkKDEtgFj_ozpnONxxQgMuyGawFuNflqOviiTxPp9xUEB8SgMe3FQT8koyx4e0Ewc0TTCXNffCo' \
   --header 'Content-Type: application/json' \
   --data "{"tracks": [{"uri": "spotify:track:3KPhaCvEPAKmwgYd8LARFe"}]}"
+
+
+Ist Song in User's Saved Tracks?:
+curl --request GET \
+  --url 'https://api.spotify.com/v1/me/tracks/contains?ids=3KPhaCvEPAKmwgYd8LARFe,4tfwHz3WpIbjKIsuuuTiEy' \
+  --header 'Authorization: Bearer BQCtEIkCcPZbysNyc7HXvSeL9wqMBqH6BUlc6voeX0QjVZEovLzCfzKNzTJ2t5uh93tTqb2PToCPcuTm7-Q8oxxTalUaaKyQvdSxWwo63cAFxwnPMRA6qQf4e3Gu53jz4HmcSa7pwfkyDf--XkMGaPdFgBbRzP1o2FtBE0GltzBotiwlvSh-xM3UE6ObWL_5S9mI7skHQOrNxuXxi7LBfCyVq0s2v9lFWGxi1BbgMi7PAZcH9KCCHUY_LEU4JYC0dg' \
+  --header 'Content-Type: application/json'
 
 
 

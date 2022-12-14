@@ -98,12 +98,27 @@ class ApiCalls:
         }
         json_song_dicts = json.dumps(songs_to_remove)
         data = '{"tracks": ' + json_song_dicts + '}'
-        print(data)
         r = requests.delete(url=url, headers=headers, data=data)
         return r.content
 
 
     # Test Funktion um Favorite Check auszuprobieren,
     # später durch track argument verallgemeinern
-    def is_track_favorite(self):
-        pass
+    def is_track_favorite(self, songs_to_check):
+        # liste mit song dicts zu String mit song ids durch Kommas getrennt converten
+        songs_string = ""
+        for song_dict in songs_to_check:
+            song_id = song_dict["uri"][14:]
+            songs_string += song_id + ","
+
+        # eigentlicher Request
+        url = "https://api.spotify.com/v1/me/tracks/contains"
+        headers = {
+            "Authorization": "Bearer " + self.access_token,
+            "Content-Type": "application/json"
+        }
+        params = {
+            "ids" : songs_string
+        }
+        r = requests.get(url=url, headers=headers, params=params)
+        print(r.json())
