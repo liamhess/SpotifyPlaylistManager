@@ -102,8 +102,7 @@ class ApiCalls:
         return r.content
 
 
-    # Test Funktion um Favorite Check auszuprobieren,
-    # später durch track argument verallgemeinern
+    # Funktion, um Favorite check auf eine Liste von song_dicts zu machen, gibt Liste mit Boolean Werten aus
     def is_track_favorite(self, songs_to_check):
         # liste mit song dicts zu String mit song ids durch Kommas getrennt converten
         songs_string = ""
@@ -122,3 +121,17 @@ class ApiCalls:
         }
         r = requests.get(url=url, headers=headers, params=params)
         return r.json()
+
+    
+    # Funktion, die eine Liste von track uris einer Playlist hinzufügt
+    def add_tracks(self, songs_to_add, playlist_id):
+        url = f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks"
+        headers = {
+            "Authorization": "Bearer " + self.access_token,
+            "Content-Type": "application/json"
+        }
+        json = {
+            "uris": songs_to_add
+        }
+        r = requests.post(url=url, headers=headers, json=json)
+        return r.content
