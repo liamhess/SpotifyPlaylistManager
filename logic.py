@@ -16,10 +16,18 @@ class Logic:
         
         for i in range(0, len(songdict)):
             songdict[i]["favorite"] = favorite_list[i]
-        
-        return songdict
 
     
+    # Funktion, die favorites aus song_dict entfernt
+    def unfavorite_shortener(self, songdict):
+        unfavorites = []
+        for song in songdict:
+            print(song)
+            if not song["favorite"]:
+                unfavorites.append(song)
+        return unfavorites
+
+
     # Funktion, die im songdict die Zeitgrenze findet und es dann runterkürzt, auf die songs die im Entfern-Zeitraum liegen
     def time_dict_shortener(self, songdict):
         breakpoint = 0
