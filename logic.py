@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timedelta
 from api_calls import *
 from internet import *
 
@@ -22,3 +22,17 @@ class Logic:
     
     # Funktion, die im songdict die Zeitgrenze findet und es dann runterkürzt, auf die songs die im Entfern-Zeitraum liegen
     def time_dict_shortener(self, songdict):
+        breakpoint = 0
+
+        for i in range(0, len(songdict)):
+            added_at = datetime.strptime(songdict[i]["added_at"], "%Y-%m-%dT%H:%M:%SZ")
+            difference = datetime.now() - added_at
+            dayDifference = difference.days
+            if dayDifference <= 91:
+                breakpoint = i
+                print(songdict[i]["name"])
+                break
+        
+        short_song_dict = songdict[0:breakpoint]
+        
+        return short_song_dict
