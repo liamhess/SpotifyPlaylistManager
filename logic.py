@@ -36,3 +36,19 @@ class Logic:
         short_song_dict = songdict[0:breakpoint]
         
         return short_song_dict
+
+    
+    # Funktion die zwei Playlists vergleicht und die fehlenden Songs (es wird angenommen, dass immer nur die
+    # gleiche Playlist neue Elemente bekommen wird und diese der anderen fehlen werden) dann als Liste mit uris ausgibt
+    def playlist_comparison(self, realplaylist, backupplaylist):
+        addList = []
+        
+        backupurilist = []
+        for song in backupplaylist:
+            backupurilist.append(song["uri"])
+
+        for song in realplaylist:
+            if song["uri"] not in backupurilist:
+                addList.append(song["uri"])
+
+        return addList
