@@ -121,4 +121,4 @@ class ApiCalls:
             "ids" : songs_string
         }
         r = requests.get(url=url, headers=headers, params=params)
-        print(r.json())
+        return r.json()
