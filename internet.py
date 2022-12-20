@@ -12,6 +12,7 @@ class Internet:
             content = json.loads(f.read())
             self.access_token = content["access_token"]
             self.refresh_token = content["refresh_token"]
+        print("internet object initialized")
 
 
     # Funktion um zu checken, ob access_token noch gültig ist, oder ob er refreshed werden muss
@@ -51,18 +52,10 @@ class Internet:
 
         content_dir = r.json();
         self.access_token = content_dir["access_token"]
-
+        
         # falls es einen neuen refresh_token gibt, wird der in Variable und danach in data.txt gespeichert
         if self.new_refresh_token_given(content_dir):
             refresh_token = content_dir["refresh_token"]
-
-        # neuen access_token und jenachdem auch refresh_token in data.txt schreiben
-        with open("data.txt", "w") as f:
-            file_dir = {
-                "access_token":  self.access_token,
-                "refresh_token": self.refresh_token
-            }
-            f.write(json.dumps(file_dir))
 
 
     # Funktion, die alle Internet Methods nun vereint, um wenn aufgerufen immer einen gültigen access_token rauszugeben

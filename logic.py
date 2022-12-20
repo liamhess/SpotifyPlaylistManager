@@ -7,6 +7,7 @@ class Logic:
 
     i = Internet()
     a = ApiCalls(i.give_valid_access_token())
+    print("logic object initialized")
 
 
     # Fügt zum songdict den key "favorite" hinzu, um später leichter checken zu können, welche Songs entfernt werden
@@ -49,14 +50,19 @@ class Logic:
     # Funktion die zwei Playlists vergleicht und die fehlenden Songs (es wird angenommen, dass immer nur die
     # gleiche Playlist neue Elemente bekommen wird und diese der anderen fehlen werden) dann als Liste mit uris ausgibt
     def playlist_comparison(self, realplaylist, backupplaylist):
+        print("function playlist_comparison started")
         addList = []
         
         backupurilist = []
         for song in backupplaylist:
             backupurilist.append(song["uri"])
 
+        print("backupurilist created")
+
         for song in realplaylist:
             if song["uri"] not in backupurilist:
                 addList.append(song["uri"])
+        
+        print("addList finished")
 
         return addList

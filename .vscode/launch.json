@@ -8,7 +8,7 @@
             "name": "Python: Aktuelle Datei",
             "type": "python",
             "request": "launch",
-            "program": "main.py",
+            "program": "lambda_function.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }
