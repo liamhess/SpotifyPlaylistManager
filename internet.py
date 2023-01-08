@@ -45,7 +45,7 @@ class Internet:
             "refresh_token": self.refresh_token,
         }
         headers = {
-            "Authorization": "Basic NmI4NjUzNTJiZWY1NDljMDg4ZmYzMzNiYTYwYjVhMGY6NmFjYWVjNjIxNDNkNDQxODk2OWY3NzhmYTcwODRiZTM="
+            "Authorization": ""
         }
 
         r = requests.post(url=url, data=data, headers=headers)
